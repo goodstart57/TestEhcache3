@@ -33,4 +33,12 @@ class MessageCacheManagerTests {
         messageCacheManager.clear();
         assertThat(messageCacheManager.get("beta")).isEmpty();
     }
+
+    @Test
+    void shouldUseConfiguredKeyGenerator() {
+        messageCacheManager.put("item-1", "value-3");
+
+        assertThat(messageCacheManager.get("message::item-1")).isEmpty();
+        assertThat(messageCacheManager.get("item-1")).contains("value-3");
+    }
 }

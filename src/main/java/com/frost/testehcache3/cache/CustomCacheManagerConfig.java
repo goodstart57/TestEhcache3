@@ -7,6 +7,7 @@ import org.ehcache.config.builders.CacheManagerBuilder;
 import org.ehcache.xml.XmlConfiguration;
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
@@ -35,13 +36,22 @@ public class CustomCacheManagerConfig {
     }
 
     @Bean
-    public CustomCacheManager<String> messageCacheManager(CacheManager ehcacheManager) {
+    public KeyGenerator messageCacheKeyGenerator() {
+        return (target, method, params) -> "message::" + params[0];
+    }
+
+    @Bean
+    public CustomCacheManager<String> messageCacheManager(
+        CacheManager ehcacheManager,
+        KeyGenerator messageCacheKeyGenerator
+    ) {
         ehcacheManager.init();
         return new CustomCacheManagerImpl<>(
             ehcacheManager,
             "sampleMessageCache",
             String.class,
-            Ordered.HIGHEST_PRECEDENCE
+            Ordered.HIGHEST_PRECEDENCE,
+            messageCacheKeyGenerator
         );
     }
 }
