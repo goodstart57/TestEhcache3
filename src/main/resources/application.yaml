@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: TestEhcache3
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
