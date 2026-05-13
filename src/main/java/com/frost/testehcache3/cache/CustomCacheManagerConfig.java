@@ -1,13 +1,13 @@
 package com.frost.testehcache3.cache;
 
 import java.io.IOException;
+import java.util.function.Function;
 
 import org.ehcache.CacheManager;
 import org.ehcache.config.builders.CacheManagerBuilder;
 import org.ehcache.xml.XmlConfiguration;
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
@@ -36,14 +36,14 @@ public class CustomCacheManagerConfig {
     }
 
     @Bean
-    public KeyGenerator messageCacheKeyGenerator() {
-        return (target, method, params) -> "message::" + params[0];
+    public Function<String, String> messageCacheKeyGenerator() {
+        return key -> "message::" + key;
     }
 
     @Bean
     public CustomCacheManager<String> messageCacheManager(
         CacheManager ehcacheManager,
-        KeyGenerator messageCacheKeyGenerator
+        Function<String, String> messageCacheKeyGenerator
     ) {
         ehcacheManager.init();
         return new CustomCacheManagerImpl<>(
