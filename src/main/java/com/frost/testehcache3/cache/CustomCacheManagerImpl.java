@@ -4,7 +4,6 @@ import java.util.Optional;
 import java.util.function.Function;
 
 import org.ehcache.Cache;
-import org.springframework.core.Ordered;
 import org.springframework.util.Assert;
 
 public class CustomCacheManagerImpl<T> implements CustomCacheManager<T> {

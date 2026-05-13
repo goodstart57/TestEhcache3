@@ -1,4 +1,4 @@
-package com.frost.testehcache3.message;
+package com.frost.testehcache3.user;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,28 +11,30 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/messages")
-public class MessageController {
+@RequestMapping("/users")
+public class UserController {
 
-    private final MessageService messageService;
+    private final UserService userService;
 
-    public MessageController(MessageService messageService) {
-        this.messageService = messageService;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping("/{id}")
-    public String getMessage(@PathVariable String id) {
-        return messageService.getMessage(id);
+    public User getUser(@PathVariable String id) {
+        return userService.getUser(id);
     }
 
     @PutMapping("/{id}")
-    public String putMessage(@PathVariable String id, @RequestBody MessagePutRequest request) {
-        return messageService.putMessage(id, request.value());
+    public User putUser(@PathVariable String id, @RequestBody UserPutRequest request) {
+        User user = new User(id, request.displayName());
+        userService.putUser(id, user);
+        return user;
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void evictMessage(@PathVariable String id) {
-        messageService.evictMessage(id);
+    public void evictUser(@PathVariable String id) {
+        userService.evictUser(id);
     }
 }

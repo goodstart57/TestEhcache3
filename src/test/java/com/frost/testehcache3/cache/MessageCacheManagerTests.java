@@ -21,16 +21,34 @@ class MessageCacheManagerTests {
     }
 
     @Test
-    void shouldPutGetEvictAndClearValues() {
+    void shouldPutValue() {
         messageCacheManager.put("alpha", "value-1");
 
         assertThat(messageCacheManager.get("alpha")).contains("value-1");
+    }
+
+    @Test
+    void shouldGetCachedValue() {
+        messageCacheManager.put("alpha", "value-1");
+
+        assertThat(messageCacheManager.get("alpha")).contains("value-1");
+    }
+
+    @Test
+    void shouldEvictValue() {
+        messageCacheManager.put("alpha", "value-1");
 
         messageCacheManager.evict("alpha");
-        assertThat(messageCacheManager.get("alpha")).isEmpty();
 
+        assertThat(messageCacheManager.get("alpha")).isEmpty();
+    }
+
+    @Test
+    void shouldClearValues() {
         messageCacheManager.put("beta", "value-2");
+
         messageCacheManager.clear();
+
         assertThat(messageCacheManager.get("beta")).isEmpty();
     }
 

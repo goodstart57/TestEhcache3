@@ -26,6 +26,11 @@ public class MessageService {
         });
     }
 
+    public String putMessage(String id, String value) {
+        messageCacheManager.put(id, value);
+        return value;
+    }
+
     public void evictMessage(String id) {
         messageCacheManager.evict(id);
     }
