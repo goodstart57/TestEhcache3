@@ -1,7 +1,7 @@
 # Test Report
 
 ## Overview
-- Project: `TestEhcache3`
+- Project: `sample-ehcache3`
 - Date: `2026-05-13`
 - Target: JDK 17, Maven Wrapper 3.9.9, Ehcache 3.10.9
 - Purpose: verify native Ehcache-backed custom cache managers, multi-cache context wiring, and controller-level `get`/`put`/`evict` behavior for both `message` and `user` domains

@@ -1,7 +1,7 @@
 # Ehcache 2에서 3으로 전환 가이드
 
 ## 개요
-이 문서는 Ehcache 2 개발자가 현재 `TestEhcache3` 프로젝트를 기준으로 Ehcache 3 전환 포인트를 이해할 수 있도록 정리한 가이드입니다.
+이 문서는 Ehcache 2 개발자가 현재 `sample-ehcache3` 프로젝트를 기준으로 Ehcache 3 전환 포인트를 이해할 수 있도록 정리한 가이드입니다.
 
 설명 대상은 현재 프로젝트에 있는 다음 구조입니다.
 - `src/main/resources/ehcache.xml` 기반의 Ehcache 3 XML 설정

@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.frost</groupId>
-	<artifactId>TestEhcache3</artifactId>
+	<artifactId>sample-ehcache3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
 	<description/>

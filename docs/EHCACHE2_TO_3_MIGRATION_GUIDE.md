@@ -1,7 +1,7 @@
 # Ehcache 2 to 3 Migration Guide
 
 ## Overview
-This guide explains how an Ehcache 2 developer should read the current `TestEhcache3` project and what to change mentally when moving to Ehcache 3.
+This guide explains how an Ehcache 2 developer should read the current `sample-ehcache3` project and what to change mentally when moving to Ehcache 3.
 
 The examples here are based on the current project structure:
 - native Ehcache 3 XML configuration in `src/main/resources/ehcache.xml`

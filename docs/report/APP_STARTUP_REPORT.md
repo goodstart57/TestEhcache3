@@ -1,7 +1,7 @@
 # Application Startup Report
 
 ## Overview
-- Project: `TestEhcache3`
+- Project: `sample-ehcache3`
 - Date: `2026-05-12`
 - Verified at: `2026-05-12 17:26:58 +09:00`
 - Purpose: verify that the Spring Boot application starts normally and that direct cache control via `messageCacheManager` works at runtime
